@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 import cv2 as cv
 import tempfile
-import utils
+from utils import MyImgUtils 
 
 st.write("""
 # 从视频合成长曝光照片
@@ -88,9 +88,9 @@ if uploaded_file is not None:
             end = frames
 
         r, g, b = None, None, None
-        r_avg, g_avg, b_avg = utils.averager(), utils.averager(), utils.averager()
+        r_avg, g_avg, b_avg = MyImgUtils.averager(), MyImgUtils.averager(), MyImgUtils.averager()
         if mode == "星轨":
-            r_avg, g_avg, b_avg = utils.maxer(), utils.maxer(), utils.maxer()
+            r_avg, g_avg, b_avg = MyImgUtils.maxer(), MyImgUtils.maxer(), MyImgUtils.maxer()
 
         mergedResult = None
         ret, frame = videoCap.read()

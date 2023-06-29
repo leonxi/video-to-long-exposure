@@ -78,9 +78,9 @@ if uploaded_file is not None:
         # 编码格式
         fourcc = int(videoCap.get(cv.CAP_PROP_FOURCC))
 
-        start = st.slider(
+        start = int(st.slider(
             '选择视频开始帧',
-            0, int(frames), (0, 256), step = 1)
+            0, int(frames), 0, step = 1))
 
         end = start + 255
 

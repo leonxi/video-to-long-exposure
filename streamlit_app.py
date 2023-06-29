@@ -88,10 +88,9 @@ if uploaded_file is not None:
             end = start + 255
 
         r, g, b = None, None, None
+        r_avg, g_avg, b_avg = utils.averager(), utils.averager(), utils.averager()
         if mode == "星轨":
             r_avg, g_avg, b_avg = utils.maxer(), utils.maxer(), utils.maxer()
-        else:
-            r_avg, g_avg, b_avg = utils.averager(), utils.averager(), utils.averager()
 
         mergedResult = None
         ret, frame = videoCap.read()

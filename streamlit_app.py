@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import cv2 as cv
 import tempfile
+import utils
 
 st.write("""
 # 从视频合成长曝光照片
@@ -43,32 +44,6 @@ with col4:
 st.write("""
 ## 开始创作你的作品
 """)
-
-@staticmethod
-def averager():
-    """Calculate the average using a clojure."""
-    count = 0
-    total = 0.0
-
-    def average(value):
-        nonlocal count, total
-        count += 1
-        total += value
-        return total / count
-
-    return average
-
-@staticmethod
-def maxer():
-    """Calculate the max using a clojure."""
-    maxium = 0.0
-
-    def maxer(value):
-        nonlocal maxium
-        maxium = cv.max(maxium, value)
-        return maxium
-
-    return maxer
 
 optioncol1, optioncol2 = st.columns(2)
 
@@ -113,9 +88,9 @@ if uploaded_file is not None:
 
         r, g, b = None, None, None
         if mode == "星轨":
-            r_avg, g_avg, b_avg = maxer(), maxer(), maxer()
+            r_avg, g_avg, b_avg = utils.maxer(), utils.maxer(), utils.maxer()
         else:
-            r_avg, g_avg, b_avg = averager(), averager(), averager()
+            r_avg, g_avg, b_avg = utils.averager(), utils.averager(), utils.averager()
 
         mergedResult = None
         ret, frame = videoCap.read()

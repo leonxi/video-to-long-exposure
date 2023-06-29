@@ -78,14 +78,14 @@ if uploaded_file is not None:
         # 编码格式
         fourcc = int(videoCap.get(cv.CAP_PROP_FOURCC))
 
-        framesRange = st.slider(
-            '选择视频范围',
+        start = st.slider(
+            '选择视频开始帧',
             0, int(frames), (0, 256), step = 1)
 
-        start, end = framesRange
+        end = start + 255
 
-        if (end - start) > 256:
-            end = start + 255
+        if end > frames:
+            end = frames
 
         r, g, b = None, None, None
         r_avg, g_avg, b_avg = utils.averager(), utils.averager(), utils.averager()

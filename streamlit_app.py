@@ -5,16 +5,6 @@ import cv2 as cv
 import tempfile
 from utils import MyImgUtils 
 
-st.set_page_config(
-    page_title="视频合成长曝光照片",
-    page_icon="🧊",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        '寻找轮廓': 'https://find-image-contours.streamlit.app/'
-    }
-)
-
 st.write("""
 # 从视频合成长曝光照片
 没有单反, 没有灰度滤光镜, 使用手机也能拍出 ___星轨___ 和 ___瀑布___ 摄影作品, 来看看效果吧
